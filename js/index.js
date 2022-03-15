@@ -10,17 +10,20 @@
 //     element.insertBefore(linkElem, element.firstChild)
 // }
 
+const markdownRootPath = "./mdcontent/"
+
 const markdownBox = document.getElementsByClassName("dm-md-content")
 for (let box of markdownBox) {
-    const path = "./mdcontent/" + box.title + ".md"
-    console.log(path) /////
+    const path = markdownRootPath + box.title + ".md"
     axios.get(path).then(
         (response) => {
             const parsedHTML = marked.parse(response.data)
             // parsedHTML.q
-            console.log(parsedHTML) /////
-            box.innerHTML = parsedHTML
+            box.innerHTML = DOMPurify.sanitize(parsedHTML)
         }
     )
+    console.log(box)
+    console.log(box.children)
 }
-axios.get()
+
+
