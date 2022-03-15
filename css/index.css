@@ -9,6 +9,7 @@
 
 body {
     background-color: var(--dm-color-background);
+    background-image: url("assets/20130806_001.jpg");
 }
 
 #dm-contents {
@@ -24,7 +25,7 @@ h1 .dm-md-content {
 /* Markdown Contents Container */
 .dm-md-content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     background-color: var(--dm-color-panel-background);
     width: 15em;
