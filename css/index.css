@@ -4,7 +4,7 @@
     --dm-font-key: LucidaGrande, Osaka, AppleGothic, monospace;
     --dm-color-background: #522F60;
     --dm-color-panel-background: #EBF6F7;
-    --dm-color-attention: #FEF263;
+    --dm-color-attention: #98D98E;
 }
 
 body {
@@ -15,19 +15,28 @@ body {
     display: flex;
     flex-wrap: wrap;
 }
+
+/* H1 */
+h1 .dm-md-content {
+    text-shadow: #FEF263 0 0 7px;
+}
+
+/* Markdown Contents Container */
 .dm-md-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     background-color: var(--dm-color-panel-background);
     width: 15em;
     margin: 5px;
     padding: 0 1em;
     border-radius: 7em 2em;
-    box-shadow: 7px 7px 3px #55A;
 }
 
 /* Key Bindings */
 .dm-hotkey {
     font-family: var(--dm-font-key);
-    background-color: #DDE;
+    background-color: #DBD0E6;
     border-radius: 5px;
     padding: 3px;
 }
@@ -35,8 +44,8 @@ body {
 /* Anchors */
 .dm-anchor {
     color: #38A1DB;
-    font-size: 0.8em;
-    margin-left: 0.5em;
+    font-size: 11pt;
+    margin-left: 5px;
 }
 .dm-anchor:hover {
     color: var(--dm-color-attention);
