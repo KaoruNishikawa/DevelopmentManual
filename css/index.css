@@ -22,6 +22,8 @@ body {
 .dm-choice {
     font-family: var(--dm-font-key);
     background: linear-gradient(var(--dm-color-background), #AEE);
-    padding: 5px;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 3px;
 }
 
