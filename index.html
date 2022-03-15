@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="robots" content="noindex">
-    <script src="https://use.fontawesome.com/98a17fc28e.js"></script>
-    <script src="./js/index.js"></script>
     <link rel="stylesheet" href="./css/index.css" />
     <title>開発の進め方</title>
 </head>
@@ -15,28 +13,7 @@
 <body>
     <div class="navbar"></div>
     <div id="dm-contents">
-        <div id="dm-env" class="dm-section dm-link">
-            <p class="dm-section-title">開発環境の構築</p>
-            <details class="dm-squash dm-link">
-                <summary>GitHub</summary>
-                アカウントを作る (本名でもペンネームでも可)
-            </details>
-            <details class="dm-squash dm-link">
-                <summary>VS-Code</summary>
-                インストール
-                拡張機能をインストール (Code Spell Checker, Git Graph, Jupyter, Pylance, Python, Todo Tree、あとはお好みで)
-                起動 → cmd+shift+P → "Shell Command: Install 'code' command in PATH" からcodeコマンドをインストール
-                format on save (チェック), python formatting provider (black), python linting flake8 enabled (チェック)
-            </details>
-            <details class="dm-squash dm-link">
-                <summary>Pyenv</summary>
-                インストール
-            </details>
-            <details class="dm-squash dm-link">
-                <summary>Poetry</summary>
-                インストール (<code>curl -sSL https://install.python-poetry.org | python3 -</code>)
-            </details>
-        </div>
+        <div id="dm-env" class="dm-md-content" title="dev_env"></div>
         <div id="dm-python" class="dm-section dm-link">
             <p class="dm-section-title">Python</p>
             <details class="dm-squash dm-link">
@@ -110,6 +87,12 @@
             </details>
         </div>
     </div>
+
+    <script src="https://use.fontawesome.com/98a17fc28e.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
