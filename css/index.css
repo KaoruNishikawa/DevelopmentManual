@@ -3,7 +3,7 @@
     --dm-font-monospace: 'Courier New', Courier, monospace;
     --dm-font-key: LucidaGrande, Osaka, AppleGothic, monospace;
     --dm-color-background: #522F60;
-    --dm-color-panel-background: #EBF6F7;
+    --dm-color-panel-background: #EBF6F7AA;
     --dm-color-attention: #98D98E;
 }
 
@@ -31,6 +31,7 @@ h1 .dm-md-element {
     margin: 5px;
     padding: 0 1em;
     border-radius: 7em 2em;
+    box-shadow: 0 0 1em var(--dm-color-panel-background);
 }
 
 /* Key Bindings */
