@@ -13,15 +13,6 @@ body {
     display: flex;
 }
 
-#dm-section {
-    display: flex;
-}
-
-.dm-squash {
-    font-family: var(--dm-font-default);
-    color: #005;
-}
-
 .dm-hotkey {
     font-family: var(--dm-font-key);
     background-color: #DDE;

@@ -109,3 +109,6 @@ dist
 
 # Mac OS
 .DS_Store
+
+# assets need to be edited
+assets/_*
