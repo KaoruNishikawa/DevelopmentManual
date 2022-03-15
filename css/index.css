@@ -11,6 +11,12 @@ body {
 
 #dm-contents {
     display: flex;
+    flex-wrap: wrap;
+}
+.dm-md-content {
+    width: 15em;
+    border: solid 5px #DDF;
+    border-radius: 5px;
 }
 
 .dm-hotkey {

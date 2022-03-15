@@ -23,7 +23,7 @@ for (let box of markdownBox) {
                 if (elem.id !== "") {
                     elem.innerHTML += anchorHTML(elem.id)
                 }
-                console.log(`add anchor @${elem.id}`)
+                console.log(`add anchor @${elem.id}`) ///
             }
         }
     )
