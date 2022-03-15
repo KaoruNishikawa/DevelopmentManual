@@ -20,7 +20,7 @@ body {
     width: 15em;
     margin: 5px;
     padding: 0 1em;
-    border-radius: 10px 3px;
+    border-radius: 7em 2em;
     box-shadow: 7px 7px 3px #55A;
 }
 
@@ -40,14 +40,14 @@ body {
 }
 .dm-anchor:hover {
     color: var(--dm-color-attention);
-    -webkit-text-stroke: 3px #38A1DB;
+    text-shadow: 3px 3px 7px #38A1DB;
 }
 
 /* Chosen items */
 .dm-choice {
     font-family: var(--dm-font-key);
     color: var(--dm-color-attention);
-    -webkit-text-stroke: 1px var(--dm-color-background);
+    text-shadow: 3px 3px 7px var(--dm-color-background);
     padding: 3px;
     margin: 5px;
     border-radius: 3px;
