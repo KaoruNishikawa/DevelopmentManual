@@ -21,8 +21,9 @@ for (let box of markdownBox) {
             for (elem of box.children) {
                 elem.classList.add("dm-md-element")
                 if (elem.id !== "") {
-                    elem.innerHTML += anchorHTML(box.title)
+                    elem.innerHTML += anchorHTML(elem.id)
                 }
+                console.log(`add anchor @${elem.id}`)
             }
         }
     )
