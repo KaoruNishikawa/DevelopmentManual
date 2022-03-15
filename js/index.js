@@ -10,20 +10,24 @@
 //     element.insertBefore(linkElem, element.firstChild)
 // }
 
+const rootURL = document.URL
+
 const markdownRootPath = "./mdcontent/"
+const markdownPath = (title) => markdownRootPath + title + ".md"
 
 const markdownBox = document.getElementsByClassName("dm-md-content")
 for (let box of markdownBox) {
-    const path = markdownRootPath + box.title + ".md"
+    const path = markdownPath(box.title)
     axios.get(path).then(
         (response) => {
             const parsedHTML = marked.parse(response.data)
-            // parsedHTML.q
             box.innerHTML = DOMPurify.sanitize(parsedHTML)
         }
     )
-    console.log(box)
-    console.log(box.children)
+    for (elem of box.children) {  // async??
+        elem.classList.add("dm-md-element")
+        if (elem.id !== "") {
+            elem.innerHTML += `<a class="anchor" href="#${box.title}"><i class="fa fa-hashtag"></i></a>`
+        }
+    }
 }
-
-
