@@ -13,11 +13,12 @@
 const markdownBox = document.getElementsByClassName("dm-md-content")
 for (let box of markdownBox) {
     const path = "./mdcontent/" + box.title + ".md"
+    console.log(path) /////
     axios.get(path).then(
         (response) => {
-            const parsedHTML = marked(response.data)
+            const parsedHTML = marked.parse(response.data)
             // parsedHTML.q
-            console.log(parsedHTML)
+            console.log(parsedHTML) /////
             box.innerHTML = parsedHTML
         }
     )
