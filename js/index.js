@@ -18,7 +18,7 @@ for (let box of markdownBox) {
         }
     ).then(
         _ => {
-            for (elem of box.children) {
+            for (let elem of box.children) {
                 elem.classList.add("dm-md-element")
                 if (elem.id !== "") {
                     elem.innerHTML += anchorHTML(elem.id)
