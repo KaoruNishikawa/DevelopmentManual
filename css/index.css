@@ -12,6 +12,7 @@ body {
     background-color: var(--dm-color-background);
 }
 
+/* Panels Container */
 #dm-contents {
     display: flex;
     flex-wrap: wrap;
@@ -21,17 +22,17 @@ body {
 
 /* H1 */
 h1.dm-md-element {
-    text-shadow: var(--dm-color-panel-background) 0 0 3px;
+    text-shadow: var(--dm-color-panel-background) 0 0 7px;
 }
 
-/* Markdown Contents Container */
+/* Markdown Contents Panel */
 .dm-md-content {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     background-color: var(--dm-color-panel-background);
     width: 15em;
-    margin: 5px;
+    margin: 15px 5px;
     padding: 0 1em;
     border-radius: 7em 2em;
     box-shadow: 0 0 3px 3px var(--dm-color-panel-background);
