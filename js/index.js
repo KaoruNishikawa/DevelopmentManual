@@ -31,3 +31,6 @@ for (let box of markdownBox) {
         }
     )
 }
+
+/* Code highlight */
+hljs.highlightAll()
