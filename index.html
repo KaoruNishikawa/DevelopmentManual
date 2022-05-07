@@ -7,31 +7,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="./css/index.css" />
-    <title>開発の進め方</title>
+    <title>Development Manual</title>
 </head>
 
 <body>
-    <div class="navbar"></div>
-    <div id="dm-contents">
-        <div id="dm-env" class="dm-md-content" title="dev_env"></div>
-        <div id="dm-python" class="dm-md-content" title="python"></div>
-        <div id="dm-ros" class="dm-md-content" title="ros"></div>
-        <div id="dm-git" class="dm-md-content" title="git"></div>
-        <div id="dm-manual" class="dm-md-content" title="manual"></div>
-        <div id="dm-project" class="dm-md-content" title="project"></div>
+    <div class="dm-flex" id="navbar">
+        <div id="dm-modal-header-container" style="width: 10px;"></div>
+        <div style="width: 70%;"></div><!-- Temporary, to align theme switch to the right -->
+        <div id="dm-this-page-url"></div>
+        <div id="dm-theme-switch"></div>
+    </div>
+    <div id="dm-main">
+        <div id="dm-bookmark" class="dm-flex"></div>
+        <div class="dm-flex">
+            <div id="dm-tools" class="dm-flex dm-md-content"></div>
+            <div id="dm-command" class="dm-flex dm-md-content"></div>
+            <div id="dm-python" class="dm-flex dm-md-content"></div>
+            <div id="dm-ros" class="dm-flex dm-md-content"></div>
+            <div id="dm-git" class="dm-flex dm-md-content"></div>
+            <div id="dm-manual" class="dm-flex dm-md-content"></div>
+            <div id="dm-project" class="dm-flex dm-md-content"></div>
+            <div id="dm-coding" class="dm-flex dm-md-content"></div>
+        </div>
+        <div id="dm-modal-container"></div>
     </div>
 
     <!-- Packages necessary for rendering the page -->
     <script src="https://use.fontawesome.com/98a17fc28e.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notifyjs-browser@0.4.2/dist/notify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.6/dist/purify.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/xt256.min.css"
+        class="dm-code-dark-theme">
     <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/default.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/base16/solarized-light.min.css"
+        class="dm-code-light-theme">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/highlight.min.js"></script>
 
     <!-- Page rendering script -->
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
 </body>
 
 </html>
