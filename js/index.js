@@ -1,36 +1,44 @@
 "use strict"
 
-// const rootURL = document.URL
+import * as config from "./config.js"
+import { MarkdownRenderer } from "./markdown.js"
+import * as trans from "./transition.js"
+import * as utils from "./utils.js"
 
-/********************************************************/
-/* Parse and Convert Markdown Contents to Topic Panels. */
-/********************************************************/
 
-const markdownRootPath = "./mdcontent/"
-const markdownPath = (title) => markdownRootPath + title + ".md"
+console.info("Thank you for visiting here!")
 
-const anchorFAClass = "fa fa-hashtag"
-const anchorHTML = (link) => `<a class="dm-anchor" href="#${link}"><i class="${anchorFAClass}"></i></a>`
+/* Avoid FOUC */
+$("body").hide()
 
-const markdownBox = document.getElementsByClassName("dm-md-content")
-for (let box of markdownBox) {
-    const path = markdownPath(box.title)
-    axios.get(path).then(
-        response => {
-            const parsedHTML = marked.parse(response.data)
-            box.innerHTML = DOMPurify.sanitize(parsedHTML)
+$(document).ready(
+    () => {
+        /* Header icons */
+        $("#dm-this-page-url").append(config.urlGetter)
+        $("#dm-theme-switch").append(
+            trans.createThemeSwitch(config.urlParser.dataTheme !== "light")
+        )
+
+        /* Show bookmark */
+        utils.showBookmark("./static/json/bookmark.json")
+
+        /* Load and Render Markdown Files */
+        const mdFileRoot = "./static/md"
+        const mdLoadPromise = []
+        for (let titleDiv of $(".dm-md-content")) {
+            const fileName = titleDiv.id.split("-")[1]
+            mdLoadPromise.push(MarkdownRenderer.renderMarkdown(
+                `${mdFileRoot}/${fileName}.md`, titleDiv
+            ))
         }
-    ).then( /// fix ids as duplicates exist
-        _ => {
-            for (let elem of box.children) {
-                elem.classList.add("dm-md-element")
-                if (elem.id !== "") {
-                    elem.innerHTML += anchorHTML(elem.id)
-                }
-            }
-        }
-    )
-}
 
-/* Code highlight */
-hljs.highlightAll()
+        /* All Elements Rendered */
+        Promise.all(mdLoadPromise).then(() => {
+            /* Open parsed location */
+            config.urlParser.transit()
+            /* Show page */
+            trans.fade($("body").show(), "in", 500)
+            config.urlParser.jump()
+        })
+    }
+)
