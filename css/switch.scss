@@ -1,0 +1,79 @@
+/* Based on: https://www.w3schools.com/howto/howto_css_switch.asp */
+
+html {
+    --dm-switch-inner-radius: 20px;
+    --dm-switch-outer-radius:
+        calc(var(--dm-switch-inner-radius) * 1.35);
+    --dm-switch-round-width:
+        calc((var(--dm-switch-outer-radius) - var(--dm-switch-inner-radius)) / 2);
+    --dm-switch-width:
+        calc(2 * (var(--dm-switch-inner-radius) + var(--dm-switch-round-width)));
+    --dm-switch-transition-duration: .4s;
+    --dm-switch-color-light: #F8B862;
+    --dm-switch-color-dark: #674196;
+    --dm-switch-color-toggle: #EBF6F7;
+}
+
+.dm-switch {
+    position: relative;
+    display: inline-block;
+    width: var(--dm-switch-width);
+    height: var(--dm-switch-outer-radius);
+
+    /* Hide Default HTML Checkbox */
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+
+/* The Slider */
+.dm-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--dm-switch-color-light);
+    -webkit-transition: var(--dm-switch-transition-duration);
+    transition: var(--dm-switch-transition-duration);
+
+    &:before {
+        position: absolute;
+        content: "";
+        height: var(--dm-switch-inner-radius);
+        width: var(--dm-switch-inner-radius);
+        left: var(--dm-switch-round-width);
+        bottom: var(--dm-switch-round-width);
+        background-color: var(--dm-switch-color-toggle);
+    }
+}
+
+input:checked {
+    &+.dm-switch-slider {
+        background-color: var(--dm-switch-color-dark);
+    }
+
+    &+.dm-switch-slider:before {
+        -webkit-transform: translateX(var(--dm-switch-inner-radius));
+        -ms-transform: translateX(var(--dm-switch-inner-radius));
+        transform: translateX(var(--dm-switch-inner-radius));
+    }
+}
+
+input:hover {
+    &+.dm-switch-slider {
+        box-shadow: 0 0 10px var(--dm-switch-color-light);
+    }
+}
+
+/* Rounded Sliders */
+.dm-switch-slider.dm-switch-round {
+    border-radius: var(--dm-switch-outer-radius);
+
+    &:before {
+        border-radius: 50%;
+    }
+}
