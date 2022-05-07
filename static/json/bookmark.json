@@ -1,0 +1,10 @@
+{
+    "アサインされた作業": {
+        "href": "https://github.com/issues/assigned?q=-label%3Awontfix+is%3Aopen",
+        "icon": "fa fa-github"
+    },
+    "レビューリクエスト": {
+        "href": "https://github.com/pulls/review-requested",
+        "icon": "fa fa-github"
+    }
+}
