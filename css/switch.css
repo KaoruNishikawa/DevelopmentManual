@@ -35,7 +35,6 @@ html {
   right: 0;
   bottom: 0;
   background-color: var(--dm-switch-color-light);
-  transition: var(--dm-switch-transition-duration);
 }
 .dm-switch-slider:before {
   position: absolute;
@@ -45,6 +44,7 @@ html {
   left: var(--dm-switch-round-width);
   bottom: var(--dm-switch-round-width);
   background-color: var(--dm-switch-color-toggle);
+  transition: var(--dm-switch-transition-duration);
 }
 
 input:checked + .dm-switch-slider {
