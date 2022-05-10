@@ -4,6 +4,7 @@
 
 - 代入
 
+    [details]
     ```python
     a = 100
     a += 100
@@ -13,17 +14,23 @@
 
 - 負数
 
+    [details]
+
     ```python
     -1
     ```
 
 - 四則演算
 
+    [details]
+
     ```python
     1 + 2 * 3 - 4 / 5
     ```
 
 - 剰余
+
+    [details]
 
     ```python
     # 100 / 7 = 商 + 剰余
@@ -33,6 +40,8 @@
 
 - 冪乗
 
+    [details]
+
     ```python
     # 2の15乗
     2 ** 15
@@ -40,11 +49,15 @@
 
 - 演算の優先順位を指定する
 
+    [details]
+
     ```python
     2 * ((3 + 4) * 5)
     ```
 
 - 型
+
+    [details]
 
     ```python
     # 整数 (int)
@@ -67,12 +80,16 @@
 
 - `for` 文
 
+    [details]
+
     ```python
     for i in range(10):
         print(i)
     ```
 
 - `if` 文
+
+    [details]
 
     ```python
     if n % 2 == 0:
@@ -85,11 +102,15 @@
 
 - `while` 文
 
+    [details]
+
     ```python
     while n
     ```
 
 - リスト内包表記
+
+    [details]
 
     ```python
     [2 * i for i in range(10)]
