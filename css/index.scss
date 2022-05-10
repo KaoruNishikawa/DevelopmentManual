@@ -120,6 +120,26 @@ pre>code {
     border: inset var(--dm-color-background-mask);
 }
 
+table {
+    width: 100%;
+
+    p,
+    pre,
+    div {
+        margin: 10px 10px;
+    }
+
+    .dm-details {
+        border: solid 3px #555;
+    }
+
+    .dm-summary {
+        cursor: pointer;
+    }
+}
+
+
+
 /* FontAwesome Icons */
 i.fa {
     font-size: 12pt;

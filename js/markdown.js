@@ -12,6 +12,35 @@ const marked = window.marked
 const DOMPurify = window.DOMPurify
 const $ = jQuery = window.jQuery
 
+const renderer = {
+    list(body, ordered, start) {
+        const type = ordered ? "ol" : "ul"
+        const startatt = (ordered && start !== 1) ? (' start="' + start + '"') : ""
+        function wrapTable(body) { return `<table>\n${body}</table>\n` }
+        if (/<tr>/.test(body)) { body = wrapTable(body) }
+        return "<" + type + startatt + ">\n" + body + "</" + type + ">\n"
+    },
+    listitem(text, task, checked) {
+        if (task) { return `<li>${text}</li>\n` }
+        const replacePattern = /^(?<summary><p>.*?<\/p>)[\n\r\s<p>\/]*?\[details\][\n\r\s<p>\/]*?(?<details><pre>.*)$/s
+        /* 's' flag represents "dotall" mode, which makes /./ to match /\n/. */
+        const replaceTo = `
+            <tr><td class="dm-summary" id="dm-summary-$<summary>">$<summary></td></tr>
+            <tr><td><div  class="dm-details" id="dm-details-$<summary>">$<details></div></td></tr>
+        `
+        const replacedText = text.replace(replacePattern, replaceTo)
+        if (replacedText === text) { return `<li>${text}</li>\n` }
+
+        const idValidated = replacedText.replace(/id="(.*?)"/g, (match, id) => {
+            const validId = id.replace(
+                /[^\d\w._-\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/g, ""
+                /* Match non-[alphanumeric, ., _, -, Japanese] characters. */
+            )
+            return `id="${validId}"`
+        })
+        return idValidated + "\n"
+    }
+}
 marked.setOptions({
     highlight: (code, lang) => {
         const language = hljs.getLanguage(lang) ? lang : "plaintext"
@@ -21,6 +50,7 @@ marked.setOptions({
     gfm: true,
     headerIds: true,
 })
+marked.use({ renderer })
 
 
 /**
@@ -58,18 +88,23 @@ class MarkdownRenderer {
                 elem.id = this.#escapeHyphen(elem.id)
                 const uniqueId = this.#generateID($(elem), fileName)
                 elem.id = uniqueId
-                $(elem).append(utils.fontAwesomeLink("fa-anchor", `#${uniqueId}`))
+                $(elem).append(utils.fontAwesomeLink("fa-anchor", "#" + uniqueId))
             }
         }
         return $elems
     }
 
-    static convertListToTable($elems) {
-        for (let elem of $elems) {
-            if (elem.nodeName == "UL") { console.log(elem) }
-            // console.log(elem.localName)
-            // TODO: Implement.
-        }
+    /**
+     * Hide details and attach its opener to summary in tables.
+     * @param {jQuery} $elems - Elements to search for the summary-details table.
+     * @returns {jQuery} Elements with details table opener attached.
+     */
+    static renderDetailsTable($elems) {
+        $elems.find(".dm-details").hide()
+        $elems.find(".dm-summary").map(function () {
+            const targetID = this.id.replace("summary", "details")
+            $(this).click(() => { $(`#${targetID}`).slideToggle(300) })
+        })
         return $elems
     }
 
@@ -82,7 +117,7 @@ class MarkdownRenderer {
     static async parseMarkdown(path) {
         const fileName = path.split("/").pop().split(".")[0]
         let $elems = await loadMarkdown(path)
-        $elems = this.convertListToTable($elems)
+        $elems = this.renderDetailsTable($elems)
 
         const $page = $("<div>").append(this.addAnchor($elems, fileName))
 

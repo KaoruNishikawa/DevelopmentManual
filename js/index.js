@@ -29,7 +29,9 @@ $(document).ready(
             const fileName = titleDiv.id.split("-")[1]
             mdLoadPromise.push(MarkdownRenderer.renderMarkdown(
                 `${mdFileRoot}/${fileName}.md`, titleDiv
-            ))
+            ).catch(err => {
+                console.error(`Error parsing Markdown file for '${fileName}'.\n`, err)
+            }))
         }
 
         /* All Elements Rendered */
@@ -37,7 +39,7 @@ $(document).ready(
             /* Open parsed location */
             config.urlParser.transit()
             /* Show page */
-            trans.fade($("body").show(), "in", 500)
+            $("body").fadeIn(300)
             config.urlParser.jump()
         })
     }
