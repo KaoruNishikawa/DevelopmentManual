@@ -14,7 +14,7 @@ class URLHandler {
 
     /**
      * Set the URL parameter describing the current page state.
-     * @param {[string, ?]} param - Parameter name and value.
+     * @param {[string, ?]} param - Array of parameter name and value pair.
      */
     set searchParams(param) { this.url.searchParams.set(...param) }
 
@@ -106,6 +106,7 @@ class URLParser {
         /* Data theme */
         const currentTheme = this.dataTheme
         $("html").attr("data-theme", currentTheme)
+        pageURL.searchParams = ["data-theme", currentTheme]
         trans.toggleTheme(currentTheme)
 
         /* Modal panel */

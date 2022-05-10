@@ -35,7 +35,6 @@ html {
   right: 0;
   bottom: 0;
   background-color: var(--dm-switch-color-light);
-  transition: var(--dm-switch-transition-duration);
 }
 .dm-switch-slider:before {
   position: absolute;
@@ -45,6 +44,7 @@ html {
   left: var(--dm-switch-round-width);
   bottom: var(--dm-switch-round-width);
   background-color: var(--dm-switch-color-toggle);
+  transition: var(--dm-switch-transition-duration);
 }
 
 input:checked + .dm-switch-slider {
@@ -176,6 +176,21 @@ code {
 pre > code {
   transition: background-color 0.3s ease-in-out;
   border: inset var(--dm-color-background-mask);
+}
+
+table {
+  width: 100%;
+}
+table p,
+table pre,
+table div {
+  margin: 10px 10px;
+}
+table .dm-details {
+  border: solid 3px #555;
+}
+table .dm-summary {
+  cursor: pointer;
 }
 
 /* FontAwesome Icons */

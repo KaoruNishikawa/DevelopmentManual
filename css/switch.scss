@@ -37,8 +37,6 @@ html {
     right: 0;
     bottom: 0;
     background-color: var(--dm-switch-color-light);
-    -webkit-transition: var(--dm-switch-transition-duration);
-    transition: var(--dm-switch-transition-duration);
 
     &:before {
         position: absolute;
@@ -48,6 +46,8 @@ html {
         left: var(--dm-switch-round-width);
         bottom: var(--dm-switch-round-width);
         background-color: var(--dm-switch-color-toggle);
+        -webkit-transition: var(--dm-switch-transition-duration);
+        transition: var(--dm-switch-transition-duration);
     }
 }
 
