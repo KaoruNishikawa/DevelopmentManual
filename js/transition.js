@@ -34,24 +34,6 @@ function createThemeSwitch(checked) {
     )
 }
 
-/**
- * Fade in/out the element.
- * @param {jQuery} $element - Element to apply the animation.
- * @param {string} direction - Fade "in" or "out".
- * @param {int} duration - Duration of animation in [ms].
- * @param {function(): undefined} callback - Function to be called on fade complete.
- * @returns {jQuery} Element(s) the animation is applied.
- */
-function fade($element, direction, duration, callback) {
-    if (!["in", "out"].includes(direction.toLowerCase())) {
-        throw "`direction` should be 'in' or 'out'."
-    }
-    const [start, end] = (direction.toLowerCase() === "in") ? [0, 1] : [1, 0]
-    return $element
-        .animate({ opacity: start }, 0)
-        .animate({ opacity: end }, { duration: duration, complete: callback })
-}
-
 
 class ModalWindow {
     constructor() {
@@ -71,8 +53,8 @@ class ModalWindow {
     opener(targetId) {
         return () => {
             config.pageURL.hash = targetId
-            fade($(targetId).show(), "in", 500)
-            fade($("#dm-modal-header").show(), "in", 500)
+            $(targetId).fadeIn(300)
+            $("#dm-modal-header").fadeIn(300)
         }
     }
 
@@ -83,8 +65,8 @@ class ModalWindow {
     closer() {
         return () => {
             config.pageURL.hash = ""
-            fade($(".dm-modal"), "out", 500, () => $(".dm-modal").hide())
-            fade($("#dm-modal-header"), "out", 500, () => $("#dm-modal-header").hide())
+            $(".dm-modal").fadeOut(300)
+            $("#dm-modal-header").fadeOut(300)
         }
     }
 }
@@ -93,4 +75,4 @@ class ModalWindow {
 const modalWindow = new ModalWindow()
 
 
-export { createThemeSwitch, fade, modalWindow, toggleTheme }
+export { createThemeSwitch, modalWindow, toggleTheme }
